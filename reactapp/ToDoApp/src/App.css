@@ -1,0 +1,252 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+/* Basic Reset & Body */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  background-color: #f0f2f5;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+/* Main App Container */
+.todo-app {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 550px; /* Limit width */
+  min-height: 300px;
+}
+
+h1 {
+  text-align: center;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Form Styling */
+.todo-form {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 10px; /* Spacing between input and button */
+}
+
+.todo-form input[type="text"] {
+  flex-grow: 1; /* Take available space */
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.todo-form input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.todo-form button {
+  padding: 10px 18px;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.todo-form button:hover {
+  background-color: #218838; /* Darker Green */
+}
+
+/* Filter Buttons */
+.todo-filter {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.todo-filter button {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.todo-filter button:hover {
+    background-color: #e2e6ea;
+    border-color: #adb5bd;
+}
+
+.todo-filter button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+.todo-filter button:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+
+/* Todo List Styling */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+/* Individual Todo Item */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Push actions to the right */
+  padding: 12px 5px; /* Less horizontal padding as actions have buttons */
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-text {
+    cursor: pointer; /* Indicate text is clickable */
+    flex-grow: 1; /* Allow text to take up space */
+    margin-right: 10px; /* Space between text and buttons */
+    word-break: break-word; /* Prevent long words from overflowing */
+}
+
+/* Completed Task Styling */
+.todo-item.completed {
+  background-color: #e9ecef; /* Light gray background */
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #6c757d; /* Muted color */
+}
+
+/* Action Buttons within Item */
+.todo-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.todo-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem; /* Make icons slightly larger */
+  padding: 5px;
+  line-height: 1; /* Prevent extra button height */
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.todo-item .toggle-btn {
+  color: #28a745; /* Green for check/undo */
+  border: 1px solid transparent; /* Maintain size */
+  min-width: 45px; /* Ensure 'Undo' fits */
+  text-align: center;
+}
+.todo-item .toggle-btn:hover {
+  background-color: #eaf6ec;
+}
+
+.todo-item.completed .toggle-btn {
+    color: #ffc107; /* Amber/Yellow for Undo */
+}
+.todo-item.completed .toggle-btn:hover {
+     background-color: #fff8e1;
+}
+
+
+.todo-item .delete-btn {
+  color: #dc3545; /* Red for delete */
+}
+.todo-item .delete-btn:hover {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Message for empty list */
+.no-todos-message {
+    text-align: center;
+    color: #888;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+/* Task Count */
+.todo-count {
+    text-align: right;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
